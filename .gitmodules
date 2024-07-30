@@ -1,0 +1,3 @@
+[submodule "third_party/qtbase"]
+	path = third_party/qtbase
+	url = https://github.com/adamkewley/qtbase

@@ -1,0 +1,45 @@
+cmake_minimum_required(VERSION 3.15)
+
+project(osc VERSION 0.5.13 LANGUAGES CXX)
+
+
+# -------------- gather user-facing build cache vars ---------------- #
+
+# set OSC_BUILD_ID
+#
+# this is so that errors in the binary can potentially be linked to the source
+# that produced the binary later on (user errors, etc.)
+if(TRUE)
+
+    if(DEFINED ENV{OSC_BUILD_ID})
+        set(OSC_DEFAULT_BUILD_ID "$ENV{OSC_BUILD_ID}")
+    else()
+        set(OSC_DEFAULT_BUILD_ID "CUSTOM_BUILD")
+    endif()
+
+    set(
+        OSC_BUILD_ID "${OSC_DEFAULT_BUILD_ID}"
+        CACHE STRING
+        "a unique identifier for this particular build configuration (handy for bug tracing)"
+    )
+    unset(OSC_DEFAULT_BUILD_ID)
+endif()
+
+
+# -------------- setup top-level project state ---------------- #
+
+# enable testing in this top-level project, so that `ctest` works when
+# (e.g.) IDEs get a list of tests when they use `ctest --show-only`
+# to list all tests project-wide
+#
+# see:
+#
+# - https://cmake.org/cmake/help/latest/command/enable_testing.html
+# - https://developercommunity.visualstudio.com/t/test-explorer-doesnt-detect-tests/482451
+# - https://stackoverflow.com/a/67984312
+enable_testing()
+
+# -------------- add/include subdirectories for each part of the project ---------------- #
+
+add_subdirectory(src)
+
