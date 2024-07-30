@@ -7,15 +7,7 @@
 #include <QObject>
 #include <QtCompilerDetection>
 
-#if defined(QT_SHARED) || !defined(QT_STATIC)
-#  if defined(BUILD_ABSTRACTVIEWER_LIB)
-#    define ABSTRACTVIEWER_EXPORT Q_DECL_EXPORT
-#  else
-#    define ABSTRACTVIEWER_EXPORT Q_DECL_IMPORT
-#  endif
-#else
-#  define ABSTRACTVIEWER_EXPORT
-#endif
+#define ABSTRACTVIEWER_EXPORT
 
 QT_BEGIN_NAMESPACE
 class QAction;
