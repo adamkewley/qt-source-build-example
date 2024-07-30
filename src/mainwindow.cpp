@@ -193,4 +193,3 @@ void MainWindow::restoreViewerSettings()
         m_viewer->restoreState(viewerSettings);
 }
 
-
